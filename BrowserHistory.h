@@ -2,21 +2,21 @@
 #define BROWSER_HISTORY_H
 
 #include <string>
-#include <stack>
-#include <vector>
-using namespace std;
 
 class BrowserHistory {
 private:
-    stack<string> backStack;
-    vector<string> allHistory;
+    std::string history[100];
+    int top;
 
 public:
-    BrowserHistory() = default;
-    void visit(const string &url);
-    void back();
-    void showHistory() const;
+    BrowserHistory();
+    void visitPage(const std::string& url);
+    void goBack();
+    void currentPage();
+    void displayHistory();
     void clearHistory();
+    bool isEmpty();
+    bool isFull();
 };
 
-#endif // BROWSER_HISTORY_H
+#endif
