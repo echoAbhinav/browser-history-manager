@@ -18,20 +18,20 @@ A simple console-based Browser History Manager with separate header and implemen
 ## 📁 File Structure
 ```
 ConsolebrowserHistoryManager/
-
 ├── BrowserHistory.h          # Class declaration
-
-├── BrowserHistory.cpp        # Class implementation## 🔧 Technical Implementation
-
+├── BrowserHistory.cpp        # Class implementation
 ├── main.cpp                  # Main program and interface
+├── compile_and_run.bat       # Compilation script
+└── browser_history.exe       # Compiled executable
+```
 
-├── compile_and_run.bat       # Compilation script### Core Concept: Array-Based Stack
+## 🔧 Technical Implementation
 
-└── browser_history.exe       # Compiled executableThe project uses **array-based stack** to manage navigation:
+### Core Concept: Array-Based Stack
+The project uses **array-based stack** to manage navigation:
 
-
-Flow Diagram---->
-
+### Flow Diagram
+```
 Your Source Files:          Compilation Process:         Final Result:
 ┌─────────────────┐        ┌─────────────────┐         ┌─────────────────┐
 │ BrowserHistory.h│   ──►  │                 │   ──►   │                 │
@@ -40,15 +40,15 @@ Your Source Files:          Compilation Process:         Final Result:
 └─────────────────┘        └─────────────────┘         └─────────────────┘
    Human-readable             Translation               Machine executable
      C++ code                   process                   binary file
+```
 
+## 💡 Program Flow
 
+### BrowserHistory.cpp Implementation
 
-BrowserHistory.cpp
-
-Program Flow
-
-
-<!-- void BrowserHistory::visitPage(const std::string& url) {
+#### visitPage() Function Logic:
+```cpp
+void BrowserHistory::visitPage(const std::string& url) {
     if (url.empty()) {
         std::cout << "Error: URL cannot be empty!" << std::endl;
         return;  // Exit function early
@@ -62,8 +62,11 @@ Program Flow
     top++;                    // Move to next position
     history[top] = url;       // Store the URL
     std::cout << "Visited: " << url << std::endl;
-} -->
+}
+```
 
+#### Step-by-step execution:
+```
 Initial state: top = -1, history[] = [empty, empty, ...]
 
 User calls: visitPage("www.google.com")
@@ -74,10 +77,11 @@ User calls: visitPage("www.google.com")
 └── Print: "Visited: www.google.com"
 
 Result: top = 0, history[0] = "www.google.com"
+```
 
-
-
-<!-- void BrowserHistory::goBack() {
+#### goBack() Function Logic:
+```cpp
+void BrowserHistory::goBack() {
     if (top <= 0) {
         if (top == -1) {
             std::cout << "No pages in history!" << std::endl;
@@ -89,8 +93,11 @@ Result: top = 0, history[0] = "www.google.com"
 
     top--;  // Move back one position
     std::cout << "Went back to: " << history[top] << std::endl;
-} -->
+}
+```
 
+#### goBack() Scenarios:
+```
 Scenario 1: Empty history (top = -1)
 └── Print: "No pages in history!"
 
@@ -99,9 +106,12 @@ Scenario 2: At first page (top = 0)
 
 Scenario 3: Can go back (top > 0)
 ├── top-- (decrement pointer)
-└── Show previous page: history[top]/
+└── Show previous page: history[top]
+```
 
-<!-- void BrowserHistory::displayHistory() {
+#### displayHistory() Function Logic:
+```cpp
+void BrowserHistory::displayHistory() {
     if (top == -1) {
         std::cout << "No history available." << std::endl;
         return;
@@ -115,8 +125,56 @@ Scenario 3: Can go back (top > 0)
         }
         std::cout << std::endl;
     }
-} -->
+}
+```
 
+#### Example Output:
+```
 === Browsing History ===
 1. www.google.com
 2. www.youtube.com (Current)
+```
+
+## 🚀 How to Compile and Run
+
+### Method 1: Using the batch script
+```bash
+# Double-click or run in terminal
+compile_and_run.bat
+```
+
+### Method 2: Manual compilation
+```bash
+g++ -o browser_history.exe main.cpp BrowserHistory.cpp
+browser_history.exe
+```
+
+## 📋 Sample Usage
+```
+Welcome to Browser History Manager!
+
+=============================
+  BROWSER HISTORY MANAGER
+=============================
+1. Visit new page
+2. Go back
+3. Show current page
+4. Show history
+5. Clear history
+6. Exit
+=============================
+Enter your choice: 1
+Enter URL: www.google.com
+Visited: www.google.com
+
+Enter your choice: 3
+Current page: www.google.com
+```
+
+## 🎓 Key Concepts
+- **Header/Implementation separation** - Professional code organization
+- **Array-based stack** - Simple data structure implementation
+- **Object-oriented design** - Encapsulation and clean interface
+- **Menu-driven programming** - User-friendly console application
+
+This is a clean, simple implementation perfect for demonstrating fundamental C++ concepts without overcomplication.
