@@ -29,7 +29,6 @@ ConsolebrowserHistoryManager/
 
 └── browser_history.exe       # Compiled executableThe project uses **array-based stack** to manage navigation:
 
-```
 
 Flow Diagram---->
 
